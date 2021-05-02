@@ -505,8 +505,8 @@
 #define PID_K1 0.95      // Smoothing factor within any PID loop
 
 #if ENABLED(PIDTEMP)
-//#define PID_EDIT_MENU         // Add PID editing to the "Advanced Settings" menu. (~700 bytes of PROGMEM)
-//#define PID_AUTOTUNE_MENU     // Add PID auto-tuning to the "Advanced Settings" menu. (~250 bytes of PROGMEM)
+#define PID_EDIT_MENU         // Add PID editing to the "Advanced Settings" menu. (~700 bytes of PROGMEM)
+#define PID_AUTOTUNE_MENU     // Add PID auto-tuning to the "Advanced Settings" menu. (~250 bytes of PROGMEM)
 //#define PID_PARAMS_PER_HOTEND // Uses separate PID parameters for each extruder (useful for mismatched extruders)
 // Set/get with gcode: M301 E[extruder number, 0-2]
 
@@ -526,9 +526,9 @@
     114.00, 114.00      \
   }
 #else
-#define DEFAULT_Kp 30.80
-#define DEFAULT_Ki 2.31
-#define DEFAULT_Kd 102.68
+#define DEFAULT_Kp 28.15
+#define DEFAULT_Ki 1.89
+#define DEFAULT_Kd 150.05
 #endif
 #endif // PIDTEMP
 
@@ -567,8 +567,8 @@
 
 // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
 // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-#define DEFAULT_bedKp 159.03
-#define DEFAULT_bedKi 24.29
+#define DEFAULT_bedKp 704.09
+#define DEFAULT_bedKi 33.37
 #define DEFAULT_bedKd 694.06
 
 // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
@@ -780,14 +780,14 @@
  */
 #define DEFAULT_MAX_FEEDRATE \
   {                          \
-    400, 400, 8, 50          \
+    200, 200, 12, 120          \
   }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
 #define MAX_FEEDRATE_EDIT_VALUES \
   {                              \
-    600, 600, 10, 50             \
+    600, 600, 20, 250             \
   } // ...or, set your own edit limits
 #endif
 
@@ -799,7 +799,7 @@
  */
 #define DEFAULT_MAX_ACCELERATION \
   {                              \
-    2000, 2000, 100, 10000       \
+    500, 500, 100, 5000       \
   }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
@@ -832,9 +832,9 @@
  */
 #define CLASSIC_JERK
 #if ENABLED(CLASSIC_JERK)
-#define DEFAULT_XJERK 7.0
-#define DEFAULT_YJERK 7.0
-#define DEFAULT_ZJERK 0.3
+#define DEFAULT_XJERK 6.0
+#define DEFAULT_YJERK 6.0
+#define DEFAULT_ZJERK 0.4
 
 //#define TRAVEL_EXTRA_XYJERK 0.0     // Additional jerk allowance for all travel moves
 
@@ -1700,7 +1700,7 @@
  *
  * View the current statistics with M78.
  */
-//#define PRINTCOUNTER
+#define PRINTCOUNTER
 
 /**
  * Password

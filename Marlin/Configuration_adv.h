@@ -189,9 +189,9 @@
 #define THERMAL_PROTECTION_PERIOD 60     // Seconds
 #define THERMAL_PROTECTION_HYSTERESIS 10 // Degrees Celsius
 
-//#define ADAPTIVE_FAN_SLOWING              // Slow part cooling fan if temperature drops
+#define ADAPTIVE_FAN_SLOWING              // Slow part cooling fan if temperature drops
 #if BOTH(ADAPTIVE_FAN_SLOWING, PIDTEMP)
-//#define NO_FAN_SLOWING_IN_PID_TUNING    // Don't slow fan speed during M303
+#define NO_FAN_SLOWING_IN_PID_TUNING    // Don't slow fan speed during M303
 #endif
 
 /**
@@ -904,22 +904,22 @@
 // Backlash Compensation
 // Adds extra movement to axes on direction-changes to account for backlash.
 //
-//#define BACKLASH_COMPENSATION
+#define BACKLASH_COMPENSATION
 #if ENABLED(BACKLASH_COMPENSATION)
 // Define values for backlash distance and correction.
 // If BACKLASH_GCODE is enabled these values are the defaults.
 #define BACKLASH_DISTANCE_MM \
   {                          \
-    0, 0, 0                  \
+    2, 2, 2                  \
   }                             // (mm)
-#define BACKLASH_CORRECTION 0.0 // 0.0 = no correction; 1.0 = full correction
+#define BACKLASH_CORRECTION 0.2 // 0.0 = no correction; 1.0 = full correction
 
 // Set BACKLASH_SMOOTHING_MM to spread backlash correction over multiple segments
 // to reduce print artifacts. (Enabling this is costly in memory and computation!)
-//#define BACKLASH_SMOOTHING_MM 3 // (mm)
+#define BACKLASH_SMOOTHING_MM 3 // (mm)
 
 // Add runtime configuration and tuning of backlash values (M425)
-//#define BACKLASH_GCODE
+#define BACKLASH_GCODE
 
 #if ENABLED(BACKLASH_GCODE)
 // Measure the Z backlash when probing (G29) and set with "M425 Z"
@@ -1121,13 +1121,13 @@
 #endif
 
 // Include a page of printer information in the LCD Main Menu
-//#define LCD_INFO_MENU
+#define LCD_INFO_MENU
 #if ENABLED(LCD_INFO_MENU)
 //#define LCD_PRINTER_INFO_IS_BOOTSCREEN // Show bootscreen(s) instead of Printer Info pages
 #endif
 
 // BACK menu items keep the highlight at the top
-//#define TURBO_BACK_MENU_ITEM
+#define TURBO_BACK_MENU_ITEM
 
 /**
    * LED Control Menu
@@ -1139,16 +1139,16 @@
 //#define NEO2_COLOR_PRESETS              // Enable a second NeoPixel Preset Color menu option
 #if ENABLED(LED_COLOR_PRESETS)
 #define LED_USER_PRESET_RED 255        // User defined RED value
-#define LED_USER_PRESET_GREEN 128      // User defined GREEN value
-#define LED_USER_PRESET_BLUE 0         // User defined BLUE value
+#define LED_USER_PRESET_GREEN 255      // User defined GREEN value
+#define LED_USER_PRESET_BLUE 255         // User defined BLUE value
 #define LED_USER_PRESET_WHITE 255      // User defined WHITE value
 #define LED_USER_PRESET_BRIGHTNESS 255 // User defined intensity
 //#define LED_USER_PRESET_STARTUP       // Have the printer display the user preset color on startup
 #endif
 #if ENABLED(NEO2_COLOR_PRESETS)
 #define NEO2_USER_PRESET_RED 255        // User defined RED value
-#define NEO2_USER_PRESET_GREEN 128      // User defined GREEN value
-#define NEO2_USER_PRESET_BLUE 0         // User defined BLUE value
+#define NEO2_USER_PRESET_GREEN 255      // User defined GREEN value
+#define NEO2_USER_PRESET_BLUE 255         // User defined BLUE value
 #define NEO2_USER_PRESET_WHITE 255      // User defined WHITE value
 #define NEO2_USER_PRESET_BRIGHTNESS 255 // User defined intensity
 //#define NEO2_USER_PRESET_STARTUP       // Have the printer display the user preset color on startup for the second strip
@@ -1167,20 +1167,20 @@
 //#define LCD_TIMEOUT_TO_STATUS 15000
 
 // Add an 'M73' G-code to set the current percentage
-//#define LCD_SET_PROGRESS_MANUALLY
+#define LCD_SET_PROGRESS_MANUALLY
 
 // Show the E position (filament used) during printing
-//#define LCD_SHOW_E_TOTAL
+#define LCD_SHOW_E_TOTAL
 
 #if ENABLED(SHOW_BOOTSCREEN)
 #define BOOTSCREEN_TIMEOUT 4000 // (ms) Total Duration to display the boot screen(s)
 #endif
 
 #if EITHER(SDSUPPORT, LCD_SET_PROGRESS_MANUALLY) && ANY(HAS_MARLINUI_U8GLIB, HAS_MARLINUI_HD44780, IS_TFTGLCD_PANEL)
-//#define SHOW_REMAINING_TIME       // Display estimated time to completion
+#define SHOW_REMAINING_TIME       // Display estimated time to completion
 #if ENABLED(SHOW_REMAINING_TIME)
-//#define USE_M73_REMAINING_TIME  // Use remaining time from M73 command instead of estimation
-//#define ROTATE_PROGRESS_DISPLAY // Display (P)rogress, (E)lapsed, and (R)emaining time
+#define USE_M73_REMAINING_TIME  // Use remaining time from M73 command instead of estimation
+#define ROTATE_PROGRESS_DISPLAY // Display (P)rogress, (E)lapsed, and (R)emaining time
 #endif
 
 #if HAS_MARLINUI_U8GLIB
@@ -2072,7 +2072,7 @@
 //#define TOOLCHANGE_FILAMENT_SWAP
 #if ENABLED(TOOLCHANGE_FILAMENT_SWAP)
 // Load / Unload
-#define TOOLCHANGE_FS_LENGTH 12                 // (mm) Load / Unload length
+#define TOOLCHANGE_FS_LENGTH 50                 // (mm) Load / Unload length
 #define TOOLCHANGE_FS_EXTRA_RESUME_LENGTH 0     // (mm) Extra length for better restart, fine tune by LCD/Gcode)
 #define TOOLCHANGE_FS_RETRACT_SPEED (50 * 60)   // (mm/min) (Unloading)
 #define TOOLCHANGE_FS_UNRETRACT_SPEED (25 * 60) // (mm/min) (On SINGLENOZZLE or Bowden loading must be slowed down)
@@ -2151,7 +2151,7 @@
                                              // 0 to disable start loading and skip to fast load only
 #define FILAMENT_CHANGE_FAST_LOAD_FEEDRATE 6 // (mm/s) Load filament feedrate. This can be pretty fast.
 #define FILAMENT_CHANGE_FAST_LOAD_ACCEL 25   // (mm/s^2) Lower acceleration may allow a faster feedrate.
-#define FILAMENT_CHANGE_FAST_LOAD_LENGTH 0   // (mm) Load length of filament, from extruder gear to nozzle. \
+#define FILAMENT_CHANGE_FAST_LOAD_LENGTH 50   // (mm) Load length of filament, from extruder gear to nozzle. \
                                              //   For Bowden, the full length of the tube and nozzle.       \
                                              //   For direct drive, the full length of the nozzle.
 //#define ADVANCED_PAUSE_CONTINUOUS_PURGE       // Purge continuously up to the purge length until interrupted.
@@ -2620,7 +2620,7 @@
    *
    * Values from 0..1023, -1 to disable homing phase for that axis.
    */
-//#define TMC_HOME_PHASE { 896, 896, 896 }
+#define TMC_HOME_PHASE { 896, 896, 896 }
 
 /**
    * Beta feature!
