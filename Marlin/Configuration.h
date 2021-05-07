@@ -838,7 +838,7 @@
  */
 #define DEFAULT_MAX_FEEDRATE \
   {                          \
-    200, 200, 12, 120          \
+    200, 200, 12, 250          \
   }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
@@ -857,7 +857,7 @@
  */
 #define DEFAULT_MAX_ACCELERATION \
   {                              \
-    500, 500, 100, 5000       \
+    500, 500, 100, 8000       \
   }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
@@ -928,7 +928,7 @@
  *
  * See https://github.com/synthetos/TinyG/wiki/Jerk-Controlled-Motion-Explained
  */
-#define S_CURVE_ACCELERATION
+//#define S_CURVE_ACCELERATION
 
 //===========================================================================
 //============================= Z Probe Options =============================
@@ -1167,7 +1167,7 @@
 #define Z_CLEARANCE_DEPLOY_PROBE 5  // Z Clearance for Deploy/Stow
 #define Z_CLEARANCE_BETWEEN_PROBES 1 // Z Clearance between probe points
 #define Z_CLEARANCE_MULTI_PROBE 1    // Z Clearance between multiple probes
-//#define Z_AFTER_PROBING           5 // Z position after probing is done
+#define Z_AFTER_PROBING           5 // Z position after probing is done
 
 #define Z_PROBE_LOW_POINT -2 // Farthest distance below the trigger-point to go before stopping
 
@@ -1331,7 +1331,7 @@
   #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
   #define NUM_RUNOUT_SENSORS   1          // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
 
-  #define FIL_RUNOUT_STATE     LOW        // Pin state indicating that filament is NOT present.
+  #define FIL_RUNOUT_STATE     HIGH        // Pin state indicating that filament is NOT present.
   #define FIL_RUNOUT_PULLUP               // Use internal pullup for filament runout pins.
   //#define FIL_RUNOUT_PULLDOWN           // Use internal pulldown for filament runout pins.
   //#define WATCH_ALL_RUNOUT_SENSORS      // Execute runout script on any triggering sensor, not only for the active extruder.
@@ -1437,7 +1437,7 @@
  * these options to restore the prior leveling state or to always enable
  * leveling immediately after G28.
  */
-#define RESTORE_LEVELING_AFTER_G28
+//#define RESTORE_LEVELING_AFTER_G28
 //#define ENABLE_LEVELING_AFTER_G28
 
 /**
@@ -1511,7 +1511,7 @@
 // Experimental Subdivision of the grid by Catmull-Rom method.
 // Synthesizes intermediate points to produce a more detailed mesh.
 //
-#define ABL_BILINEAR_SUBDIVISION
+//#define ABL_BILINEAR_SUBDIVISION
 #if ENABLED(ABL_BILINEAR_SUBDIVISION)
 // Number of subdivisions between probe points
 #define BILINEAR_SUBDIVISIONS 3
@@ -1634,7 +1634,7 @@
 #endif
 
 // Homing speeds (mm/min)
-#define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (20*60) }
+#define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (50*60) }
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
@@ -2723,7 +2723,7 @@
 #endif
 
 // Support for Adafruit NeoPixel LED driver
-#define NEOPIXEL_LED
+//#define NEOPIXEL_LED
 #if ENABLED(NEOPIXEL_LED)
   #define NEOPIXEL_TYPE   NEO_GRBW // NEO_GRBW / NEO_GRB - four/three channel driver type (defined in Adafruit_NeoPixel.h)
   #define NEOPIXEL_PIN     P2_00       // LED driving pin
