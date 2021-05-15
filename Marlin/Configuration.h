@@ -841,7 +841,7 @@
     200, 200, 12, 250          \
   }
 
-//#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
+#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
 #define MAX_FEEDRATE_EDIT_VALUES \
   {                              \
@@ -1106,7 +1106,7 @@
 #define XY_PROBE_FEEDRATE (8000)
 
 // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
-#define Z_PROBE_FEEDRATE_FAST (133*60)
+#define Z_PROBE_FEEDRATE_FAST (8000)
 
 // Feedrate (mm/min) for the "accurate" probe of each point
 #define Z_PROBE_FEEDRATE_SLOW (Z_PROBE_FEEDRATE_FAST / 2)
@@ -1634,7 +1634,7 @@
 #endif
 
 // Homing speeds (mm/min)
-#define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (50*60) }
+#define HOMING_FEEDRATE_MM_M { (8000), (8000), (5000) }
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
